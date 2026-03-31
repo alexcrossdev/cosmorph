@@ -1,0 +1,15 @@
+{
+	"required": true,
+	"package": "me.alexcrossdev.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"ItemStackMixin",
+		"ItemModelManagerMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
