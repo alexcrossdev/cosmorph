@@ -1,6 +1,6 @@
 package me.alexcrossdev.data;
 
-import com.google.gson.Gson;
+import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import me.alexcrossdev.CosmorphClient;
 
@@ -13,7 +13,10 @@ import java.util.Map;
 import java.util.UUID;
 
 public class CosmorphStorage {
-    private static final Gson GSON = new Gson();
+    private static final Gson GSON = new GsonBuilder()
+            .setPrettyPrinting()
+            .create();
+
     private static final Type TYPE = new TypeToken<Map<String, CosmorphData>>(){}.getType();
     private static Map<String, CosmorphData> cache = new HashMap<>();
 

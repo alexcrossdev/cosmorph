@@ -3,13 +3,11 @@ package me.alexcrossdev.mixin.client;
 import me.alexcrossdev.CosmorphClient;
 import me.alexcrossdev.data.CosmorphData;
 import me.alexcrossdev.data.CosmorphStorage;
-import net.minecraft.component.Component;
+import me.alexcrossdev.parser.TextParser;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -34,13 +32,8 @@ public class ItemStackMixin {
         CosmorphData data = CosmorphStorage.get(UUID.fromString(uuid));
 
         if (data == null) return;
-        if (data.getName().isEmpty()) return;
+        if (data.name() == null) return;
 
-        Text custom = Text.literal(data.getName())
-                .styled(style -> style
-                        .withItalic(false)
-                );
-
-        cir.setReturnValue(custom);
+        cir.setReturnValue(TextParser.parse(data.name()));
     }
 }

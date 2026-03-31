@@ -1,6 +1,6 @@
 package me.alexcrossdev;
 
-import me.alexcrossdev.command.CosmorphCommand;
+import me.alexcrossdev.command.MorphCommand;
 import me.alexcrossdev.command.ToggleCommand;
 import me.alexcrossdev.data.CosmorphStorage;
 import net.fabricmc.api.ClientModInitializer;
@@ -20,7 +20,7 @@ public class CosmorphClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		ToggleCommand.register();
-		CosmorphCommand.register();
+		MorphCommand.register();
 
 		CosmorphStorage.load();
 	}
